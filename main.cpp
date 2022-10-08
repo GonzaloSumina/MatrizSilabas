@@ -5,13 +5,12 @@ int main(){
 	char matriz[10][10];
 	int matriz_[10][10];
 	char vocales_min[]={'a','e','i','o','u'};
-	//char consonantes_min[]={'b', 'c', 'd', 'f', 'g', 'h', 'j', 'k', 'l','m','n','p','q','r','s','t','v','w','x','y','z'};
 	char vocales_may[]={'A','E','I','O','U'};
-	//char consonantes_may[]={'B', 'C', 'D', 'F', 'G', 'H', 'J', 'K', 'L','M','N','P','Q','R','S','T','V','W','X','Y','Z'};
 	char random_min, random_may;
 	int variable;
 	int cont=0;
 	int x=0, y=0;
+	std::system("cls");
 
 	for (int i=0;i<10; ++i){
 		for (int j=0; j<10; ++j){
@@ -133,7 +132,314 @@ int main(){
 						continue;
 					}
 				}
-				else if ((i==0 && j==0)||(i==9 && j==0))
+				else if ((i==0 && j==0)||(i==9 && j==0)||(i==0 && j==9)||(i==9 && j==9)){
+					if (i==0 && j==0){
+						if (matriz_[i][j+1]==0){
+							coord[x][0]=i;
+							coord[x][1]=j+1;
+							coord[x][2]=i;
+							coord[x][3]=j;
+							matriz_[i][j+1]=2;
+							++x;
+							continue;
+						}
+						else if (matriz_[i+1][j+1]==0){
+							coord[x][0]=i+1;
+							coord[x][1]=j+1;
+							coord[x][2]=i;
+							coord[x][3]=j;
+							matriz_[i+1][j+1]=2;
+							++x;
+							continue;
+						}
+						else if (matriz_[i+1][j]==0){
+							coord[x][0]=i+1;
+							coord[x][1]=j;
+							coord[x][2]=i;
+							coord[x][3]=j;
+							matriz_[i+1][j]=2;
+							++x;
+							continue;
+						}
+					}
+					else if (i==9 && j==0){
+						if (matriz_[i-1][j]==0){
+							coord[x][0]=i-1;
+							coord[x][1]=j;
+							coord[x][2]=i;
+							coord[x][3]=j;
+							matriz_[i-1][j]=2;
+							++x;
+							continue;
+						}
+						else if (matriz_[i-1][j+1]==0){
+							coord[x][0]=i-1;
+							coord[x][1]=j+1;
+							coord[x][2]=i;
+							coord[x][3]=j;
+							matriz_[i-1][j+1]=2;
+							++x;
+							continue;
+						}
+						else if (matriz_[i][j+1]==0){
+							coord[x][0]=i;
+							coord[x][1]=j+1;
+							coord[x][2]=i;
+							coord[x][3]=j;
+							matriz_[i][j+1]=2;
+							++x;
+							continue;
+						}
+					}
+					else if (i==0 && j==9){
+						if (matriz_[i+1][j]==0){
+							coord[x][0]=i+1;
+							coord[x][1]=j;
+							coord[x][2]=i;
+							coord[x][3]=j;
+							matriz_[i+1][j]=2;
+							++x;
+							continue;
+						}
+						else if (matriz_[i+1][j-1]==0){
+							coord[x][0]=i+1;
+							coord[x][1]=j-1;
+							coord[x][2]=i;
+							coord[x][3]=j;
+							matriz_[i+1][j-1]=2;
+							++x;
+							continue;
+						}
+						else if (matriz_[i][j-1]==0){
+							coord[x][0]=i;
+							coord[x][1]=j-1;
+							coord[x][2]=i;
+							coord[x][3]=j;
+							matriz_[i-1][j]=2;
+							++x;
+							continue;
+						}
+					}
+					else if (i==9 && j==9){
+						if (matriz_[i-1][j-1]==0){
+							coord[x][0]=i-1;
+							coord[x][1]=j-1;
+							coord[x][2]=i;
+							coord[x][3]=j;
+							matriz_[i-1][j-1]=2;
+							++x;
+							continue;
+						}
+						else if (matriz_[i-1][j]==0){
+							coord[x][0]=i-1;
+							coord[x][1]=j;
+							coord[x][2]=i;
+							coord[x][3]=j;
+							matriz_[i-1][j]=2;
+							++x;
+							continue;
+						}
+						else if (matriz_[i][j-1]==0){
+							coord[x][0]=i;
+							coord[x][1]=j-1;
+							coord[x][2]=i;
+							coord[x][3]=j;
+							matriz_[i-1][j]=2;
+							++x;
+							continue;
+						}
+					}
+				}
+				else if ((i>0 && i<9 && j==0)||(j>0 && j<9 && i==0)||(i>0 && i<9 && j==9)||(j>0 && j<9 && i==9)){
+					if (i>0 && i<9 && j==0){
+						if (matriz_[i-1][j]==0){
+							coord[x][0]=i-1;
+							coord[x][1]=j;
+							coord[x][2]=i;
+							coord[x][3]=j;
+							matriz_[i-1][j]=2;
+							++x;
+							continue;
+						}
+						else if (matriz_[i-1][j+1]==0){
+							coord[x][0]=i-1;
+							coord[x][1]=j+1;
+							coord[x][2]=i;
+							coord[x][3]=j;
+							matriz_[i-1][j+1]=2;
+							++x;
+							continue;
+						}
+						else if (matriz_[i][j+1]==0){
+							coord[x][0]=i;
+							coord[x][1]=j+1;
+							coord[x][2]=i;
+							coord[x][3]=j;
+							matriz_[i][j+1]=2;
+							++x;
+							continue;
+						}
+						else if (matriz_[i+1][j+1]==0){
+							coord[x][0]=i+1;
+							coord[x][1]=j+1;
+							coord[x][2]=i;
+							coord[x][3]=j;
+							matriz_[i+1][j+1]=2;
+							++x;
+							continue;
+						}
+						else if (matriz_[i+1][j]==0){
+							coord[x][0]=i+1;
+							coord[x][1]=j;
+							coord[x][2]=i;
+							coord[x][3]=j;
+							matriz_[i+1][j]=2;
+							++x;
+							continue;
+						}
+					}
+					else if (j>0 && j<9 && i==0){
+						if (matriz_[i][j+1]==0){
+							coord[x][0]=i;
+							coord[x][1]=j+1;
+							coord[x][2]=i;
+							coord[x][3]=j;
+							matriz_[i][j+1]=2;
+							++x;
+							continue;
+						}
+						else if (matriz_[i+1][j+1]==0){
+							coord[x][0]=i+1;
+							coord[x][1]=j+1;
+							coord[x][2]=i;
+							coord[x][3]=j;
+							matriz_[i+1][j+1]=2;
+							++x;
+							continue;
+						}
+						else if (matriz_[i+1][j]==0){
+							coord[x][0]=i+1;
+							coord[x][1]=j;
+							coord[x][2]=i;
+							coord[x][3]=j;
+							matriz_[i+1][j]=2;
+							++x;
+							continue;
+						}
+						else if (matriz_[i+1][j-1]==0){
+							coord[x][0]=i+1;
+							coord[x][1]=j-1;
+							coord[x][2]=i;
+							coord[x][3]=j;
+							matriz_[i+1][j-1]=2;
+							++x;
+							continue;
+						}
+						else if (matriz_[i][j-1]==0){
+							coord[x][0]=i;
+							coord[x][1]=j-1;
+							coord[x][2]=i;
+							coord[x][3]=j;
+							matriz_[i-1][j]=2;
+							++x;
+							continue;
+						}
+					}
+					else if (i>0 && i<9 && j==9){
+						if (matriz_[i-1][j-1]==0){
+							coord[x][0]=i-1;
+							coord[x][1]=j-1;
+							coord[x][2]=i;
+							coord[x][3]=j;
+							matriz_[i-1][j-1]=2;
+							++x;
+							continue;
+						}
+						else if (matriz_[i-1][j]==0){
+							coord[x][0]=i-1;
+							coord[x][1]=j;
+							coord[x][2]=i;
+							coord[x][3]=j;
+							matriz_[i-1][j]=2;
+							++x;
+							continue;
+						}
+						else if (matriz_[i+1][j]==0){
+							coord[x][0]=i+1;
+							coord[x][1]=j;
+							coord[x][2]=i;
+							coord[x][3]=j;
+							matriz_[i+1][j]=2;
+							++x;
+							continue;
+						}
+						else if (matriz_[i+1][j-1]==0){
+							coord[x][0]=i+1;
+							coord[x][1]=j-1;
+							coord[x][2]=i;
+							coord[x][3]=j;
+							matriz_[i+1][j-1]=2;
+							++x;
+							continue;
+						}
+						else if (matriz_[i][j-1]==0){
+							coord[x][0]=i;
+							coord[x][1]=j-1;
+							coord[x][2]=i;
+							coord[x][3]=j;
+							matriz_[i-1][j]=2;
+							++x;
+							continue;
+						}
+					}
+					else if (j>0 && j<9 && i==9){
+						if (matriz_[i-1][j-1]==0){
+							coord[x][0]=i-1;
+							coord[x][1]=j-1;
+							coord[x][2]=i;
+							coord[x][3]=j;
+							matriz_[i-1][j-1]=2;
+							++x;
+							continue;
+						}
+						else if (matriz_[i-1][j]==0){
+							coord[x][0]=i-1;
+							coord[x][1]=j;
+							coord[x][2]=i;
+							coord[x][3]=j;
+							matriz_[i-1][j]=2;
+							++x;
+							continue;
+						}
+						else if (matriz_[i-1][j+1]==0){
+							coord[x][0]=i-1;
+							coord[x][1]=j+1;
+							coord[x][2]=i;
+							coord[x][3]=j;
+							matriz_[i-1][j+1]=2;
+							++x;
+							continue;
+						}
+						else if (matriz_[i][j+1]==0){
+							coord[x][0]=i;
+							coord[x][1]=j+1;
+							coord[x][2]=i;
+							coord[x][3]=j;
+							matriz_[i][j+1]=2;
+							++x;
+							continue;
+						}
+						else if (matriz_[i][j-1]==0){
+							coord[x][0]=i;
+							coord[x][1]=j-1;
+							coord[x][2]=i;
+							coord[x][3]=j;
+							matriz_[i-1][j]=2;
+							++x;
+							continue;
+						}
+					}
+				}
 			}
 			else{
 				continue;
@@ -144,22 +450,13 @@ int main(){
 	for (int i=0;i<10; ++i){
 		std::cout<<"[ ";
 		for (int j=0; j<10; ++j){
-			std::cout<<matriz[i][j]<<"\t";
-		}
-		std::cout<<"] \n";
-	}
-
-	for (int i=0;i<10; ++i){
-		std::cout<<"[ ";
-		for (int j=0; j<10; ++j){
-			std::cout<<matriz_[i][j]<<"\t";
-		}
-		std::cout<<"] \n";
-	}
-	for (int i=0;i<cont; ++i){
-		std::cout<<"[ ";
-		for (int j=0; j<4; ++j){
-			std::cout<<coord[i][j]<<"\t";
+			if (matriz_[i][j]==2 || matriz_[i][j]==1){
+				std::cout<<"\x1B[1;35;41m";	
+				std::cout << matriz[i][j] << "\x1B[0m \t"; 
+			}
+			else{
+				std::cout<<matriz[i][j]<<"\t";
+			}
 		}
 		std::cout<<"] \n";
 	}
